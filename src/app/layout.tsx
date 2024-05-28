@@ -3,6 +3,7 @@ import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 
 import { HeaderComponent } from "@/components/header-component";
+import { FooterComponent } from "@/components/footer-component";
 
 const inter = Inter({ subsets: ["latin"] });
 const lora = Lora({ subsets: ["latin"] });
@@ -20,12 +21,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header
-          className={`${lora.className} flex justify-center p-4 bg-primary text-white h-[100px]`}
-        >
-          <HeaderComponent />
-        </header>
-        {children}
+        <div className="w-screen h-screen bg-background flex flex-col justify-between">
+          <header
+            className={`${lora.className} flex justify-center items-center p-4 bg-primary text-white h-[150px]`}
+          >
+            <HeaderComponent />
+          </header>
+          <main className="flex flex-col items-center bg-foreground h-svh">
+            {children}
+          </main>
+          <footer
+            className={`${lora.className} flex justify-center p-4 bg-primary text-white h-[150px]`}
+          >
+            <FooterComponent />
+          </footer>
+        </div>
       </body>
     </html>
   );
